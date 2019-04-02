@@ -1,0 +1,104 @@
+##########################################################################
+# Decisions
+##########################################################################
+decision_planet_food_boost = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_resources
+	
+	resources = {
+		category = decisions
+	}
+	
+	potential = {
+		owner = { is_regular_empire = yes }
+		NOR = {
+			has_modifier = planet_growth_discouraged
+			has_modifier = planet_population_control
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = planet_food_boost }
+	}	
+	
+	effect = {
+		add_modifier = { modifier = "planet_food_boost" days = -1 }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_end_planet_food_boost = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_resources
+	
+	resources = {
+		category = decisions
+	}
+	
+	potential = {
+		owner = { is_regular_empire = yes }
+		has_modifier = planet_food_boost
+	}
+	
+	effect = {
+		remove_modifier = planet_food_boost
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_planet_luxuries_boost = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_luxuries
+
+	resources = {
+		category = decisions
+	}
+	
+	potential = {
+		owner = { is_regular_empire = yes }
+	}
+	
+	allow = {
+		NOT = { has_modifier = planet_luxuries_boost }
+	}	
+	
+	effect = {
+		add_modifier = { modifier = "planet_luxuries_boost" days = -1 }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_planet_luxuries_boost_off = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_luxuries
+
+	resources = {
+		category = decisions		
+	}
+	
+	potential = {
+		owner = { is_regular_empire = yes }
+		has_modifier = planet_luxuries_boost
+	}
+	
+	effect = {
+		remove_modifier = planet_luxuries_boost
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}

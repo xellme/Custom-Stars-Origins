@@ -1,0 +1,14 @@
+planet_food_boost = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_resources.dds"
+	icon_frame = 1
+	pop_growth_speed = 0.2
+    planet_pops_organics_food_upkeep_mult = 0.5
+}
+
+planet_luxuries_boost = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_luxuries.dds"
+	icon_frame = 1
+	planet_amenities_mult = 0.25
+	planet_immigration_pull_mult = 0.25
+    planet_pops_consumer_goods_upkeep_mult = 0.5
+}

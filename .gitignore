@@ -1,4 +1,3 @@
-*
-!.gitignore
-!toggleable_decisions/
-!custom_starts/*
+*.mod
+nekomimi2/
+nekomimi2/

@@ -1,0 +1,36 @@
+
+##########################################################################
+# Decisions
+##########################################################################
+cs_setup_decision = {
+	sound = event_administrative_work
+	icon = decision_resources
+	
+	resources = {
+		category = decisions
+	}
+	
+	potential = {
+		NOT = {
+			has_global_flag = cs_setup_initializer
+		}
+	}
+	
+	allow = {
+		NOT = {
+			has_global_flag = cs_setup_initializer
+		}
+	}	
+	
+	effect = {
+		hidden_effect = {	
+			owner = {
+				country_event = { id = cs_setup.100 }
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}

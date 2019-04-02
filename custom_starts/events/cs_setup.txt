@@ -1,0 +1,35 @@
+namespace = cs_setup
+
+#Autostart
+event = {
+	id = cs_setup.101
+	hide_window = yes
+	fire_only_once = yes
+    is_triggered_only = yes
+
+	immediate = {
+		random_country = {
+			limit = { is_ai = no }
+			country_event = { id = cs_setup.100 }
+		}
+    }
+}
+
+#Fires all the events for the custom homeworlds
+country_event = {
+	id = cs_setup.100
+	hide_window = yes
+	fire_only_once = yes
+    is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			has_global_flag = cs_setup_initializer
+		}
+	}
+
+	immediate = {
+        set_global_flag = cs_setup_initializer
+        country_event = { id = cs_human.100 }
+    }
+}
