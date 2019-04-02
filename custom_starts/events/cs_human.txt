@@ -1,18 +1,6 @@
 namespace = cs_human
 
-country_event = {
-	id = cs_human.10
-	hide_window = yes
-	fire_only_once = yes
-    is_triggered_only = yes
-
-	immediate = {
-        country_event = { id = cs_human.100 }
-        country_event = { id = cs_human.200 }
-    }
-}
-
-# Connects Sol and Deneb's neighbor with wormhole 
+# Connects Sol and Deneb's neighbour with wormhole 
 country_event = {
 	id = cs_human.100
 	hide_window = yes
@@ -63,82 +51,6 @@ country_event = {
 					link_wormholes = prev
 				}
 			}
-		}
-	}
-}
-
-# Advanced start trigger for UNE if there is colony
-country_event = {
-	id = cs_human.200
-	hide_window = yes
-    is_triggered_only = yes
-
-	trigger = {
-		any_system = { has_star_flag = sol_system }
-		any_system = { has_star_flag = deneb_system }
-	}
-
-	immediate = {
-    	random_system = {
-			limit = { 
-				has_star_flag = sol_system
-            }
-			save_global_event_target_as = sol_system
-			owner = {
-				save_global_event_target_as = sol_owner
-				if = {
-					# Scope to UNE via sol and only trigger if not advanced empire
-					# The check is done via tech that AE are getting since game is not saying who is and who isn't advanced 
-					
-					limit = { NOT { has_technology = "tech_society_1" } }
-					country_event = {id = cs_human.201 }
-				}
-			}
-		}
-	}
-}
-
-# Advanced start for UNE if there is colony
-country_event = {
-	id = cs_human.201
-	hide_window = yes
-    is_triggered_only = yes
-
-	immediate = {
-		# add territory
-		while = {
-			count = 100
-			random_system = {
-#				limit = {
-#					NOR = {
-#						exists = space_owner
-#						has_star_flag = hostile_system
-#						any_ship_in_system = { always = yes }
-#					}
-#					distance = {
-#						source = event_target:sol_system
-#						use_bypasses = no
-#						max_jumps <= 2
-#					}
-#				}
-
-				
-				create_starbase = {
-					size = starbase_outpost
-					owner = event_target:sol_system
-				}
-			}
-		}
-
-		# empire upgrade
-		country_event = {id = game_start.6 }
-
-		# upgrade every planet
-		every_planet_within_border = {
-			planet_event = {id = game_start.20 }	
-			planet_event = {id = game_start.21 }	
-			planet_event = {id = game_start.22 }
-			planet_event = {id = game_start.23 }
 		}
 	}
 }
