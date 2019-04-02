@@ -1,6 +1,6 @@
 namespace = cs_setup
 
-#Autostart
+# Autostart
 event = {
 	id = cs_setup.101
 	hide_window = yes
@@ -15,7 +15,7 @@ event = {
     }
 }
 
-#Fires all the events for the custom homeworlds
+# Fires all the events for the custom homeworlds
 country_event = {
 	id = cs_setup.100
 	hide_window = yes
@@ -30,6 +30,6 @@ country_event = {
 
 	immediate = {
         set_global_flag = cs_setup_initializer
-        country_event = { id = cs_human.100 }
+        country_event = { id = cs_human.10 }
     }
 }
