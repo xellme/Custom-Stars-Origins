@@ -1,0 +1,72 @@
+namespace = cs_utils
+
+# Advanced start
+country_event = {
+	id = cs_utils.100
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		# add territory
+		while = {
+			count = 4
+			random_system_within_border = {
+				limit = { 
+					has_star_flag = sol_system
+				}
+				closest_system = {
+					limit = {
+						NOR = {
+							exists = space_owner
+							has_star_flag = hostile_system
+							any_ship_in_system = { always = yes }
+						}
+						has_access_fleet = root
+					}
+
+					create_starbase = {
+						size = starbase_outpost
+						owner = root
+					}
+				}
+			}
+		}
+
+		country_event = { 
+			id = cs_utils.101
+			days = 1 
+		}
+	}
+}
+
+# Rest of advanced start after a day. Game needs to recalculate borders 
+country_event = {
+	id = cs_utils.101
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# empire upgrade
+		country_event = {id = game_start.6 }
+
+		# colonies
+		every_planet_within_border = {
+			limit = {
+				habitability = { 
+					who = root.species
+					value >= 0.7
+				}
+				is_colony = no
+			}
+
+			# colonise
+			set_owner = root
+
+			# build up
+			planet_event = {id = game_start.20 }	
+			planet_event = {id = game_start.21 }	
+			planet_event = {id = game_start.22 }
+			planet_event = {id = game_start.23 }
+		}
+	}
+}
