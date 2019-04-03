@@ -5,3 +5,4 @@
  cs_advanced_05_DESC:0 "Same as Random Unary I, but with:\n* Advanced Start"
  cs_habitat_01_NAME:0 "Habitat"
  cs_habitat_01_DESC:0 "Same as Random Unary II, but with:\n* habitat\n* additional minerals and energy from planets"
+ cs_habitat_start:0 "We had to master the Void"

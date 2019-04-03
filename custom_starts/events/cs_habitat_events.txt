@@ -18,6 +18,18 @@ country_event = {
                     id = cs_habitat.100 
                 }
 			}
+        }
+        
+        every_system = {
+			limit = {
+				has_star_flag = cs_empire_home_system_habitat_tech
+			}
+
+			owner = {
+                country_event = { 
+                    id = cs_habitat.102 
+                }
+			}
 		}
 	}
 }
@@ -34,10 +46,6 @@ country_event = {
                 id = cs_habitat.101
             }   
         }
-
-        country_event = {
-            id = cs_habitat.102
-        }
     }
 }
 
@@ -53,6 +61,10 @@ planet_event = {
         clear_blockers = yes
         remove_all_districts = yes
 
+        # clear specyfic planet stuff
+        remove_building = building_research_lab_1
+        remove_building = building_commercial_zone
+
         # planet type
         change_pc = pc_habitat
         set_planet_flag = megastructure
@@ -63,9 +75,19 @@ planet_event = {
         add_district = district_hab_housing
         add_district = district_hab_housing
         
-        add_district = district_hab_commercial        
-        add_district = district_hab_cultural
+        add_district = district_hab_commercial
+        add_district = district_hab_commercial
         add_district = district_hab_science
+
+        # food solution
+        owner = {
+            give_technology = {
+                tech = tech_hydroponics
+            }
+        }
+
+        add_building = building_hydroponics_farm
+        add_building = building_hydroponics_farm
     }
 }
 
@@ -76,7 +98,21 @@ country_event = {
     is_triggered_only = yes
 
     immediate = {
-        # ascension_perks_add = 1
+        # that was as far as I've got with trying to give them the ascention perk from the start
+
         # give_technology = { tech = tech_starbase_4 }
+        # add_modifier = {
+        #     modifier = "cs_habitat_start"
+        #     days = -1
+        # }
+
+        # where
+        # cs_habitat_start = {
+        #     ascension_perks_add = 1
+        # }
+
+        # allows to build habitats without the ascention perk
+        # as of 2.2.6 nothing is using this flag so should be a okay
+        set_country_flag = democratic_khanate_flag
     }
 }

@@ -25,6 +25,7 @@ cs_habitat_01 = {
 	flags = { 
 		empire_home_system 
 		cs_empire_home_system_habitat
+		cs_empire_home_system_habitat_tech
 	}
 
 	init_effect = {
