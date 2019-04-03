@@ -9,7 +9,6 @@ event = {
 
 	immediate = {
 		random_country = {
-			limit = { is_ai = no }
 			country_event = { id = cs_setup.100 }
 		}
     }
@@ -31,5 +30,6 @@ country_event = {
 	immediate = {
         set_global_flag = cs_setup_initializer
         country_event = { id = cs_human.10 }
+        country_event = { id = cs_advanced.10 }
     }
 }

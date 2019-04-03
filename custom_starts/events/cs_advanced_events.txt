@@ -1,19 +1,46 @@
-namespace = cs_utils
+namespace = cs_advanced
 
-# Advanced start
+@advanced_territory = 4
+@advanced_min_hab = 0.7
+
+# Advanced start trigger
 country_event = {
-	id = cs_utils.100
+	id = cs_advanced.10
 	hide_window = yes
     is_triggered_only = yes
 
 	immediate = {
+		every_system = {
+			limit = {
+				has_star_flag = cs_empire_home_system_advanced
+			}
+
+			owner = {
+				country_event = {id = cs_advanced.100 }
+			}
+		}
+	}
+}
+
+# Advanced start
+country_event = {
+	id = cs_advanced.100
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		# only trigger if not advanced empire
+		# The check is done via tech that AE are getting since game is not saying who is and who isn't advanced 
+		
+		NOT = { has_technology = "tech_society_1" }
+	}
+
+	immediate = {
 		# add territory
 		while = {
-			count = 4
-			random_system_within_border = {
-				limit = { 
-					has_star_flag = sol_system
-				}
+			count = @advanced_territory
+			
+			capital_scope = {
 				closest_system = {
 					limit = {
 						NOR = {
@@ -33,7 +60,7 @@ country_event = {
 		}
 
 		country_event = { 
-			id = cs_utils.101
+			id = cs_advanced.101
 			days = 1 
 		}
 	}
@@ -41,7 +68,7 @@ country_event = {
 
 # Rest of advanced start after a day. Game needs to recalculate borders 
 country_event = {
-	id = cs_utils.101
+	id = cs_advanced.101
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -54,7 +81,7 @@ country_event = {
 			limit = {
 				habitability = { 
 					who = root.species
-					value >= 0.7
+					value >= @advanced_min_hab
 				}
 				is_colony = no
 			}

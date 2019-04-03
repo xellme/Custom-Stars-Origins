@@ -83,16 +83,10 @@ country_event = {
     	random_system = {
 			limit = { 
 				has_star_flag = sol_system
-            }
-			save_global_event_target_as = sol_system
+			}
 			owner = {
-				if = {
-					# Scope to UNE via sol and only trigger if not advanced empire
-					# The check is done via tech that AE are getting since game is not saying who is and who isn't advanced 
-					
-					limit = { NOT { has_technology = "tech_society_1" } }
-					country_event = {id = cs_utils.100 }
-				}
+				# Scope to UNE via sol
+				country_event = {id = cs_advanced.100 }
 			}
 		}
 	}
