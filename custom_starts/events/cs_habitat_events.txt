@@ -1,0 +1,82 @@
+namespace = cs_habitat
+
+# Advanced start trigger
+country_event = {
+	id = cs_habitat.10
+	hide_window = yes
+    is_triggered_only = yes
+    fire_only_once = yes
+
+	immediate = {
+		every_system = {
+			limit = {
+				has_star_flag = cs_empire_home_system_habitat
+			}
+
+			owner = {
+                country_event = { 
+                    id = cs_habitat.100 
+                }
+			}
+		}
+	}
+}
+
+# habitat stuff
+country_event = {
+	id = cs_habitat.100
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        capital_scope = {
+            planet_event = {
+                id = cs_habitat.101
+            }   
+        }
+
+        country_event = {
+            id = cs_habitat.102
+        }
+    }
+}
+
+# change planet to habitat
+planet_event = {
+	id = cs_habitat.101
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+        # clear generic planet stuff
+        clear_deposits = yes
+        clear_blockers = yes
+        remove_all_districts = yes
+
+        # planet type
+        change_pc = pc_habitat
+        set_planet_flag = megastructure
+        set_planet_flag = habitat
+
+        # districts
+        add_district = district_hab_housing
+        add_district = district_hab_housing
+        add_district = district_hab_housing
+        
+        add_district = district_hab_commercial        
+        add_district = district_hab_cultural
+        add_district = district_hab_science
+    }
+}
+
+# add the habitat ascention perk
+country_event = {
+	id = cs_habitat.102
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        # ascension_perks_add = 1
+        # give_technology = { tech = tech_starbase_4 }
+    }
+}
