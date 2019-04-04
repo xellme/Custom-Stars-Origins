@@ -8,29 +8,33 @@ country_event = {
     fire_only_once = yes
 
 	immediate = {
-		every_system = {
-			limit = {
-				has_star_flag = cso_empire_home_system_habitat
-			}
-
-			owner = {
-                country_event = { 
-                    id = cso_habitat.100 
+        every_country = {
+            limit = {
+                capital_scope = {
+                    solar_system = {
+                        has_star_flag = cso_empire_home_system_habitat
+                    }
                 }
-			}
+            }
+
+            country_event = {
+                id = cso_habitat.100 
+            }
         }
-        
-        every_system = {
-			limit = {
-				has_star_flag = cso_empire_home_system_habitat_tech
-			}
 
-			owner = {
-                country_event = { 
-                    id = cso_habitat.102 
+        every_country = {
+            limit = {
+                capital_scope = {
+                    solar_system = {
+                        has_star_flag = cso_empire_home_system_habitat_tech
+                    }
                 }
-			}
-		}
+            }
+
+            country_event = {
+                id = cso_habitat.102 
+            }
+        }
 	}
 }
 

@@ -10,15 +10,19 @@ country_event = {
     is_triggered_only = yes
 
 	immediate = {
-		every_system = {
-			limit = {
-				has_star_flag = cso_empire_home_system_advanced
-			}
+        every_country = {
+            limit = {
+                capital_scope = {
+                    solar_system = {
+                        has_star_flag = cso_empire_home_system_advanced
+                    }
+                }
+            }
 
-			owner = {
-				country_event = {id = cso_advanced.100 }
-			}
-		}
+            country_event = {
+                id = cso_advanced.100 
+            }
+        }
 	}
 }
 
