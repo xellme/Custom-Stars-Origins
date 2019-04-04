@@ -1,22 +1,22 @@
-namespace = cs_advanced
+namespace = cso_advanced
 
 @advanced_territory = 4
 @advanced_min_hab = 0.7
 
 # Advanced start trigger
 country_event = {
-	id = cs_advanced.10
+	id = cso_advanced.10
 	hide_window = yes
     is_triggered_only = yes
 
 	immediate = {
 		every_system = {
 			limit = {
-				has_star_flag = cs_empire_home_system_advanced
+				has_star_flag = cso_empire_home_system_advanced
 			}
 
 			owner = {
-				country_event = {id = cs_advanced.100 }
+				country_event = {id = cso_advanced.100 }
 			}
 		}
 	}
@@ -24,7 +24,7 @@ country_event = {
 
 # Advanced start
 country_event = {
-	id = cs_advanced.100
+	id = cso_advanced.100
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -60,7 +60,7 @@ country_event = {
 		}
 
 		country_event = { 
-			id = cs_advanced.101
+			id = cso_advanced.101
 			days = 1 
 		}
 	}
@@ -68,7 +68,7 @@ country_event = {
 
 # Rest of advanced start after a day. Game needs to recalculate borders 
 country_event = {
-	id = cs_advanced.101
+	id = cso_advanced.101
 	hide_window = yes
 	is_triggered_only = yes
 

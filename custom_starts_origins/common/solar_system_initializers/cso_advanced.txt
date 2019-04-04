@@ -13,7 +13,7 @@
 @moon_max_size = 10
 
 # Unary System I
-cs_advanced_05 = {
+cso_advanced_05 = {
 	class = "rl_starting_stars"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
@@ -24,7 +24,7 @@ cs_advanced_05 = {
 
 	flags = { 
 		empire_home_system 
-		cs_empire_home_system_advanced
+		cso_empire_home_system_advanced
 	}
 
 	init_effect = {

@@ -1,8 +1,8 @@
-namespace = cs_habitat
+namespace = cso_habitat
 
 # Advanced start trigger
 country_event = {
-	id = cs_habitat.10
+	id = cso_habitat.10
 	hide_window = yes
     is_triggered_only = yes
     fire_only_once = yes
@@ -10,24 +10,24 @@ country_event = {
 	immediate = {
 		every_system = {
 			limit = {
-				has_star_flag = cs_empire_home_system_habitat
+				has_star_flag = cso_empire_home_system_habitat
 			}
 
 			owner = {
                 country_event = { 
-                    id = cs_habitat.100 
+                    id = cso_habitat.100 
                 }
 			}
         }
         
         every_system = {
 			limit = {
-				has_star_flag = cs_empire_home_system_habitat_tech
+				has_star_flag = cso_empire_home_system_habitat_tech
 			}
 
 			owner = {
                 country_event = { 
-                    id = cs_habitat.102 
+                    id = cso_habitat.102 
                 }
 			}
 		}
@@ -36,14 +36,14 @@ country_event = {
 
 # habitat stuff
 country_event = {
-	id = cs_habitat.100
+	id = cso_habitat.100
 	hide_window = yes
     is_triggered_only = yes
 
     immediate = {
         capital_scope = {
             planet_event = {
-                id = cs_habitat.101
+                id = cso_habitat.101
             }   
         }
     }
@@ -51,7 +51,7 @@ country_event = {
 
 # change planet to habitat
 planet_event = {
-	id = cs_habitat.101
+	id = cso_habitat.101
 	hide_window = yes
     is_triggered_only = yes
 
@@ -93,7 +93,7 @@ planet_event = {
 
 # add the habitat ascention perk
 country_event = {
-	id = cs_habitat.102
+	id = cso_habitat.102
 	hide_window = yes
     is_triggered_only = yes
 
@@ -102,12 +102,12 @@ country_event = {
 
         # give_technology = { tech = tech_starbase_4 }
         # add_modifier = {
-        #     modifier = "cs_habitat_start"
+        #     modifier = "cso_habitat_start"
         #     days = -1
         # }
 
         # where
-        # cs_habitat_start = {
+        # cso_habitat_start = {
         #     ascension_perks_add = 1
         # }
 

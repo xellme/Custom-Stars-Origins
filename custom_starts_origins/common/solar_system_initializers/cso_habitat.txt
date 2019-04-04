@@ -13,7 +13,7 @@
 @moon_max_size = 10
 
 # Unary System II
-cs_habitat_01 = {
+cso_habitat_01 = {
 	class = "rl_starting_stars"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
@@ -24,8 +24,8 @@ cs_habitat_01 = {
 	
 	flags = { 
 		empire_home_system 
-		cs_empire_home_system_habitat
-		cs_empire_home_system_habitat_tech
+		cso_empire_home_system_habitat
+		cso_empire_home_system_habitat_tech
 	}
 
 	init_effect = {
