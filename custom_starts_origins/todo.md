@@ -1,12 +1,14 @@
 1. Lost colony
-    1. [x] Wormhole connection
-    1. [x] Advance start
+    1. Wormhole connection
+    1. Advance start
     1. Humans story
-1. [x] Custom advance start flag
-1. [x] Habitat start
+1. Custom advance start flag
+1. Habitat start
 1. Mega-engineering start
-1. Ring world start
-1. On the run from hive mind
-1. Civil war
-1. Federation start
-    1. Federation leader
+1. [x] Gateway
+1. [x] Isolate starting cluster
+1. [x] Ring world start
+1. [x] On the run from hive mind
+1. [x] Civil war
+1. [x] Federation start
+    1. [x] Federation leader

@@ -1,0 +1,112 @@
+namespace = cso_gateway
+
+# Gateway trigger
+country_event = {
+	id = cso_gateway.10
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_home_gateway_activated
+                has_star_flag = cso_home_gateway_deactivated
+            }
+        }
+    }
+
+	immediate = {
+        country_event = {
+            id = cso_gateway.11
+        }
+        country_event = {
+            id = cso_gateway.12
+        }
+	}
+}
+
+# trigger
+country_event = {
+	id = cso_gateway.11
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_home_gateway_activated
+            }
+        }
+    }
+
+	immediate = {
+        country_event = {
+            id = cso_gateway.100
+        }
+	}
+}
+
+# trigger
+country_event = {
+	id = cso_gateway.12
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_home_gateway_deactivated
+            }
+        }
+    }
+
+	immediate = {
+        country_event = {
+            id = cso_gateway.200
+        }
+	}
+}
+
+# spawn activated gateway
+country_event = {
+	id = cso_gateway.100
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+        # spawn ruined because it has the randoms set up
+        country_event = {
+            id = cso_gateway.200
+        }
+        
+        # activate the gate
+        capital_scope.solar_system = {
+            random_system_megastructure = {
+                limit = {
+                    is_megastructure_type = gateway_ruined
+                }
+                activate_gateway = this
+            }
+        }
+	}
+}
+
+# spawn deactivated gateway
+country_event = {
+	id = cso_gateway.200
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+        capital_scope.solar_system = {
+            spawn_megastructure = {
+                type = gateway_ruined
+                random_pos = yes
+                orbit_angle = 360
+            }
+        }
+	}
+}

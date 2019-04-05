@@ -13,6 +13,8 @@ country_event = {
                 has_star_flag = cso_tech_wormhole_stabilization
                 has_star_flag = cso_tech_mega_engineering_option
                 has_star_flag = cso_tech_mega_engineering
+                has_star_flag = cso_tech_gateway_activation_option
+                has_star_flag = cso_tech_gateway_activation
             }
         }
     }
@@ -52,6 +54,16 @@ country_event = {
         if = {
             limit = { capital_scope.solar_system = { has_star_flag = cso_tech_mega_engineering }}
             country_event = { id = cso_techs.201 }
+        }
+
+        # tech_mega_engineering
+        if = {
+            limit = { capital_scope.solar_system = { has_star_flag = cso_tech_gateway_activation_option }}
+            country_event = { id = cso_techs.300 }
+        }
+        if = {
+            limit = { capital_scope.solar_system = { has_star_flag = cso_tech_gateway_activation }}
+            country_event = { id = cso_techs.301 }
         }
 	}
 }
@@ -97,6 +109,29 @@ country_event = {
 	immediate = {
 		give_technology = {
             tech = tech_mega_engineering
+            message = no
+        }
+	}
+}
+
+country_event = {
+	id = cso_techs.300
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		add_research_option = tech_gateway_activation
+	}
+}
+
+country_event = {
+	id = cso_techs.301
+	hide_window = yes
+    is_triggered_only = yes
+    
+	immediate = {
+		give_technology = {
+            tech = tech_gateway_activation
             message = no
         }
 	}
