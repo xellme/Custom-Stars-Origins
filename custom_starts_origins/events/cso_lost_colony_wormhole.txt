@@ -1,0 +1,159 @@
+namespace = cso_lost_colony_wormhole
+
+country_event = {
+	id = cso_lost_colony_wormhole.10
+    hide_window = yes
+    is_triggered_only = yes
+
+    # Match pairs of countries with the home and colony tags if they have the same species
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_lost_colony_wormhole_home
+            }
+        }
+        any_country = {
+            exists = capital_scope
+            capital_scope.solar_system = {
+                OR = {
+                    has_star_flag = cso_lost_colony_wormhole_colony
+                }
+            }
+            NOT = { is_country = root }
+            is_subspecies = root.owner_species
+        }
+    }
+
+	immediate = {
+        save_event_target_as = cso_lost_colony_wormhole_home_country
+        every_country = {
+            limit = {
+                capital_scope.solar_system = {
+                        has_star_flag = cso_lost_colony_wormhole_colony
+                }
+                NOT = { is_country = root }
+                is_same_species = root
+            }
+
+            save_event_target_as = cso_lost_colony_wormhole_colony_country
+            country_event = {
+                id = cso_lost_colony_wormhole.11   
+            }
+        }
+	}
+}
+
+# trigger for pair of
+# event_target:cso_lost_colony_wormhole_home_country
+# event_target:cso_lost_colony_wormhole_colony_country
+country_event = {
+	id = cso_lost_colony_wormhole.11
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        # Link with wormholes
+        country_event = {
+            id = cso_lost_colony_wormhole.100 
+        }
+
+        # Event for colony
+        event_target:cso_lost_colony_wormhole_colony_country = {
+            country_event = {
+                id = cso_lost_colony_wormhole.200 
+            }        
+        }
+
+        # Event for home
+        event_target:cso_lost_colony_wormhole_home_country = {
+            country_event = {
+                id = cso_lost_colony_wormhole.300
+            }
+        }
+    }
+}
+
+# Pair with wormhole
+country_event = {
+	id = cso_lost_colony_wormhole.100
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+        # colony capital
+        event_target:cso_lost_colony_wormhole_colony_country.capital_scope.solar_system = {
+            # select something nearby for one end of wormhole
+            random_system = {
+                limit = {
+                    has_natural_wormhole = no
+                    distance = {
+                        source = prev
+                        use_bypasses = no
+                        min_jumps >= 2
+                        max_jumps <= 3
+                    }
+                }
+                
+                # home capital 
+                event_target:cso_lost_colony_wormhole_home_country.capital_scope.solar_system = {
+                    prev = {
+                        spawn_natural_wormhole = {
+                            bypass_type = wormhole
+                            random_pos = yes
+                            orbit_angle = 360
+                            }
+                    }
+        
+                    spawn_natural_wormhole = {
+                        bypass_type = wormhole
+                        random_pos = yes
+                        orbit_angle = 360
+                    }
+        
+                    link_wormholes = prev
+                }
+            }
+        }
+	}
+}
+
+# Event for colony
+country_event = {
+	id = cso_lost_colony_wormhole.200
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        event_target:cso_lost_colony_wormhole_home_country.capital_scope = {
+            root = {
+                # mark old home as homeworld
+                owner_species = {
+                    set_species_homeworld = prevprev
+                }
+            }
+
+            # mark the old homewolrd on map
+            root = {
+                create_point_of_interest = {
+                    id = cso_survey_home_system_chain_poi.1
+                    name = cso_survey_home_system_chain_poi
+                    desc = cso_survey_home_system_chain_poi_desc
+                    event_chain = cso_survey_home_system_chain
+                    location = prev
+                }
+            }
+        }
+    }
+}
+
+# Event for home
+country_event = {
+	id = cso_lost_colony_wormhole.300
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        # nothing to do for home so far
+    }
+}

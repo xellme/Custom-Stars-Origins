@@ -1,41 +1,59 @@
 namespace = cso_habitat
 
-# Advanced start trigger
+# Habitat trigger
 country_event = {
 	id = cso_habitat.10
 	hide_window = yes
     is_triggered_only = yes
-    fire_only_once = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_empire_home_system_habitat
+                has_star_flag = cso_empire_home_system_habitat_tech
+            }
+        }
+    }
 
 	immediate = {
-        every_country = {
-            limit = {
-                capital_scope = {
-                    solar_system = {
-                        has_star_flag = cso_empire_home_system_habitat
-                    }
-                }
-            }
-
-            country_event = {
-                id = cso_habitat.100 
-            }
+        country_event = {
+            id = cso_habitat.11
         }
-
-        every_country = {
-            limit = {
-                capital_scope = {
-                    solar_system = {
-                        has_star_flag = cso_empire_home_system_habitat_tech
-                    }
-                }
-            }
-
-            country_event = {
-                id = cso_habitat.102 
-            }
+        country_event = {
+            id = cso_habitat.12 
         }
 	}
+}
+
+# specific triggers
+country_event = {
+	id = cso_habitat.11
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { capital_scope.solar_system = { 
+            has_star_flag = cso_empire_home_system_habitat
+        }}
+
+    immediate = { country_event = {
+            id = cso_habitat.100 
+        }}
+}
+
+# specific triggers
+country_event = {
+	id = cso_habitat.12
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { capital_scope.solar_system = { 
+            has_star_flag = cso_empire_home_system_habitat
+        }}
+
+    immediate = { country_event = {
+            id = cso_habitat.200 
+        }}
 }
 
 # habitat stuff
@@ -97,7 +115,7 @@ planet_event = {
 
 # add the habitat ascention perk
 country_event = {
-	id = cso_habitat.102
+	id = cso_habitat.200
 	hide_window = yes
     is_triggered_only = yes
 
@@ -114,6 +132,8 @@ country_event = {
         # cso_habitat_start = {
         #     ascension_perks_add = 1
         # }
+
+        ######################################################
 
         # allows to build habitats without the ascention perk
         # as of 2.2.6 nothing is using this flag so should be a okay

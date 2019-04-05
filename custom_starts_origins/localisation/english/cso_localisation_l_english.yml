@@ -1,7 +1,18 @@
 ﻿l_english:
  cso_setup_decision:0 "00 Run Custom Starts Event"
  cso_setup_decision_desc:1 "Go Go GO"
- cso_advanced_05_NAME:0 "Random Unary I [AS]"
+ cso_advanced_05_NAME:0 "CSO: Advanced Start"
  cso_advanced_05_DESC:0 "Same as Random Unary I, but with:\n* Advanced Start"
- cso_habitat_01_NAME:0 "Habitat"
+ cso_habitat_01_NAME:0 "CSO: Habitat"
  cso_habitat_01_DESC:0 "Same as Random Unary II, but with:\n* habitat\n* ability to build habitats\n* additional minerals and energy from planets"
+ cso_lost_colony_wormhole_home_05_NAME:0 "CSO: Lost Colony via Wormhole - Home"
+ cso_lost_colony_wormhole_home_05_DESC:0 "Same as Random Unary I, but with:\n* Advanced Start\n* Wormhole to neighborhood of Colony Empire of same specious. \n\n (if there isn't a corresponding Colony Empire wormhole won't be created)"
+ cso_lost_colony_wormhole_colony_05_NAME:0 "CSO: Lost Colony via Wormhole - Colony"
+ cso_lost_colony_wormhole_colony_05_DESC:0 "Same as Random Unary I, but with:\n* Wormhole to capital of Home Empire of same specious. \n* Race homeworld is set to the Home Empire capital \n\n (if there isn't a corresponding Home Empire this will be a normal start)"
+ cso_survey_home_system_chain_poi:0 "Homeworld"
+ cso_survey_home_system_chain_poi_desc:0 "[Root.GetSpeciesNamePlural] came to this place and lost contact with the origins. Our astronomers think that this is the location of the old homeworld, [Root.GetHomeWorldName]."
+
+
+
+
+ 

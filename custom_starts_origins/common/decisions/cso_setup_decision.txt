@@ -3,6 +3,8 @@
 ##########################################################################
 # Decisions
 ##########################################################################
+
+# For debug purpose
 cs_setup_decision = {
 	sound = event_administrative_work
 	icon = decision_resources
@@ -26,7 +28,7 @@ cs_setup_decision = {
 	effect = {
 		hidden_effect = {	
 			owner = {
-				country_event = { id = cso_setup.100 }
+				# country_event = { id = cso_setup.100 }
 			}
 		}
 	}

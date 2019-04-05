@@ -9,20 +9,19 @@ country_event = {
 	hide_window = yes
     is_triggered_only = yes
 
-	immediate = {
-        every_country = {
-            limit = {
-                capital_scope = {
-                    solar_system = {
-                        has_star_flag = cso_empire_home_system_advanced
-                    }
-                }
-            }
-
-            country_event = {
-                id = cso_advanced.100 
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_empire_home_system_advanced
             }
         }
+    }
+
+	immediate = {
+		country_event = {
+			id = cso_advanced.100 
+		}
 	}
 }
 
