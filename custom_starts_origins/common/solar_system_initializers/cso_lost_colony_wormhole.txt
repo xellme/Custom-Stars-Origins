@@ -25,6 +25,7 @@ cso_lost_colony_wormhole_home_05 = {
     flags = { 
         empire_home_system
         cso_lost_colony_wormhole_home
+		cso_empire_home_system_advanced
     }
 
 	init_effect = {

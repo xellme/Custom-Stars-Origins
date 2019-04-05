@@ -11,7 +11,8 @@
  cso_lost_colony_wormhole_colony_05_DESC:0 "Same as Random Unary I, but with:\n* Wormhole to capital of Home Empire of same specious. \n* Race homeworld is set to the Home Empire capital \n\n (if there isn't a corresponding Home Empire this will be a normal start)"
  cso_survey_home_system_chain_poi:0 "Homeworld"
  cso_survey_home_system_chain_poi_desc:0 "[Root.GetSpeciesNamePlural] came to this place and lost contact with the origins. Our astronomers think that this is the location of the old homeworld, [Root.GetHomeWorldName]."
-
+ cso_survey_home_system_chain_title:0 "Homeworld"
+ cso_survey_home_system_chain_desc:0 ""
 
 
 

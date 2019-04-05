@@ -21,7 +21,7 @@ country_event = {
                 }
             }
             NOT = { is_country = root }
-            is_subspecies = root.owner_species
+            is_same_species = root
         }
     }
 
@@ -29,6 +29,7 @@ country_event = {
         save_event_target_as = cso_lost_colony_wormhole_home_country
         every_country = {
             limit = {
+                exists = capital_scope
                 capital_scope.solar_system = {
                         has_star_flag = cso_lost_colony_wormhole_colony
                 }
