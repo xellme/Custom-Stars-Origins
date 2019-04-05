@@ -164,7 +164,8 @@ cso_lost_colony_wormhole_colony_05 = {
 	
     flags = { 
         empire_home_system
-        cso_lost_colony_wormhole_colony
+		cso_lost_colony_wormhole_colony
+		cso_tech_wormhole_stabilization_option
     }
 
 	init_effect = {

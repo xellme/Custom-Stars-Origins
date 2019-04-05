@@ -1,0 +1,103 @@
+namespace = cso_techs
+
+country_event = {
+	id = cso_techs.10
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_tech_wormhole_stabilization_option
+                has_star_flag = cso_tech_wormhole_stabilization
+                has_star_flag = cso_tech_mega_engineering_option
+                has_star_flag = cso_tech_mega_engineering
+            }
+        }
+    }
+
+	immediate = {
+		country_event = {
+			id = cso_techs.11
+		}
+	}
+}
+
+country_event = {
+	id = cso_techs.11
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+    }
+
+	immediate = {
+        # tech_wormhole_stabilization
+        if = {
+            limit = { capital_scope.solar_system = { has_star_flag = cso_tech_wormhole_stabilization_option }}
+            country_event = { id = cso_techs.100 }
+        }
+        if = {
+            limit = { capital_scope.solar_system = { has_star_flag = cso_tech_wormhole_stabilization }}
+            country_event = { id = cso_techs.101 }
+        }
+
+        # tech_mega_engineering
+        if = {
+            limit = { capital_scope.solar_system = { has_star_flag = cso_tech_mega_engineering_option }}
+            country_event = { id = cso_techs.200 }
+        }
+        if = {
+            limit = { capital_scope.solar_system = { has_star_flag = cso_tech_mega_engineering }}
+            country_event = { id = cso_techs.201 }
+        }
+	}
+}
+
+country_event = {
+	id = cso_techs.100
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		add_research_option = tech_wormhole_stabilization
+	}
+}
+
+country_event = {
+	id = cso_techs.101
+	hide_window = yes
+    is_triggered_only = yes
+    
+	immediate = {
+		give_technology = {
+            tech = tech_wormhole_stabilization
+            message = no
+        }
+	}
+}
+
+country_event = {
+	id = cso_techs.200
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		add_research_option = tech_mega_engineering
+	}
+}
+
+country_event = {
+	id = cso_techs.201
+	hide_window = yes
+    is_triggered_only = yes
+    
+	immediate = {
+		give_technology = {
+            tech = tech_mega_engineering
+            message = no
+        }
+	}
+}

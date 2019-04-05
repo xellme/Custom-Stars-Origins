@@ -4,5 +4,6 @@ on_game_start_country = {
         cso_human.10
         cso_lost_colony_wormhole.10
         cso_advanced.10
+        cso_techs.10
     }
 }

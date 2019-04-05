@@ -15,6 +15,7 @@ country_event = {
 		set_global_flag = cso_setup_human_initializer
         country_event = { id = cso_human.100 }
         country_event = { id = cso_human.200 }
+        country_event = { id = cso_human.300 }
     }
 }
 
@@ -76,6 +77,32 @@ country_event = {
 			owner = {
 				country_event = {
 					id = cso_advanced.100 
+				}
+			}
+		}
+	}
+}
+
+# Wormhole tech for COM
+country_event = {
+	id = cso_human.300
+	hide_window = yes
+    is_triggered_only = yes
+
+	trigger = {
+		any_system = { has_star_flag = sol_system }
+		any_system = { has_star_flag = deneb_system }
+	}
+
+	immediate = {
+		# Scope to COM via deneb
+    	random_system = {
+			limit = { 
+				has_star_flag = deneb_system
+			}
+			owner = {
+				country_event = {
+					id = cso_techs.100 
 				}
 			}
 		}

@@ -105,6 +105,7 @@ planet_event = {
         owner = {
             give_technology = {
                 tech = tech_hydroponics
+                message = no
             }
         }
 
