@@ -1,10 +1,12 @@
 on_game_start_country = {
     events = {
+        cso_isolation.10
         cso_habitat.10
         cso_human.10
         cso_lost_colony_wormhole.10
         cso_advanced.10
         cso_techs.10
         cso_gateway.10
+        cso_federation.10
     }
 }

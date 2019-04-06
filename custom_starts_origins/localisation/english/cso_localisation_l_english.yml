@@ -1,5 +1,5 @@
 ﻿l_english:
-cso_survey_home_system_chain_poi:0 "Homeworld"
+ cso_survey_home_system_chain_poi:0 "Homeworld"
  cso_survey_home_system_chain_poi_desc:0 "[Root.GetSpeciesNamePlural] came to this place and lost contact with the origins. Our astronomers think that this is the location of the old homeworld, [Root.GetHomeWorldName]."
  cso_survey_home_system_chain_title:0 "Homeworld"
  cso_survey_home_system_chain_desc:0 ""
@@ -17,6 +17,16 @@ cso_survey_home_system_chain_poi:0 "Homeworld"
  cso_gateway_activated_DESC:0 "Same as Random Unary I, but with:\n* Activated gateway"
  cso_gateway_deactivated_NAME:0 "CSO: Gateway - deactivated"
  cso_gateway_deactivated_DESC:0 "Same as Random Unary I, but with:\n* Deactivated gateway\n* Gateway activation tech option"
+ cso_isolated_cluster_NAME:0 "CSO: Isolated cluster"
+ cso_isolated_cluster_DESC:0 "Same as Random Unary I, but with:\n* cluster without hyperlanes to rest of the galaxy\n* wormhole in the cluster"
+ cso_isolated_cluster_rails_NAME:0 "CSO: Isolated cluster - railroad"
+ cso_isolated_cluster_rails_DESC:0 "Same as Random Unary I, but with:\n* cluster without hyperlanes to rest of the galaxy unless there is other empire nearby; then the connection will be only to it\n* wormhole in the cluster"
+ cso_federation_1_leader_NAME:0 "CSO: Federation I - leader"
+ cso_federation_1_leader_DESC:0 "Same as Random Unary I, but with:\n* President of federation with other countries that have <Federation - member> start\n* Advanced Start"
+ cso_federation_1_member_1_NAME:0 "CSO: Federation I - member 1"
+ cso_federation_1_member_1_DESC:0 "Same as Random Unary I, but with:\n* Member of federation with other countries that have <Federation - member> start"
+ cso_federation_1_member_2_NAME:0 "CSO: Federation I - member 2"
+ cso_federation_1_member_2_DESC:0 "Same as Random Unary I, but with:\n* Member of federation with other countries that have <Federation - member> start"
 
 
  

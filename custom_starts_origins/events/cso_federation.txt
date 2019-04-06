@@ -1,0 +1,146 @@
+namespace = cso_federation
+
+# Isolation trigger
+country_event = {
+	id = cso_federation.10
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_federation_1_leader
+                has_star_flag = cso_federation_1_member
+            }
+        }
+    }
+
+	immediate = {
+        country_event = {
+            id = cso_federation.11
+        }
+        country_event = {
+            id = cso_federation.12 
+        }
+	}
+}
+
+
+# specific triggers
+country_event = {
+	id = cso_federation.11
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { 
+        exists = capital_scope
+        capital_scope.solar_system = { 
+            has_star_flag = cso_federation_1_member
+        }
+        any_country = {
+            NOT = { 
+                is_same_empire = prev 
+            }
+            exists = capital_scope
+            capital_scope.solar_system = { 
+                has_star_flag = cso_federation_1_leader
+            }   
+        }
+    }
+
+    immediate = { country_event = {
+            id = cso_federation.100 
+        }}
+}
+
+# specific triggers
+country_event = {
+	id = cso_federation.12
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { 
+        exists = capital_scope
+        capital_scope.solar_system = { 
+            has_star_flag = cso_federation_1_member
+        }
+        any_country = {
+            NOT = { 
+                is_same_empire = prev 
+            }
+            exists = capital_scope
+            capital_scope.solar_system = { 
+                has_star_flag = cso_federation_1_member
+            }   
+        }
+        NOT = {
+            any_country = {
+                NOT = { 
+                    is_same_empire = prev 
+                }
+                exists = capital_scope
+                capital_scope.solar_system = { 
+                    has_star_flag = cso_federation_1_leader
+                }   
+            }
+        }
+    }
+
+    immediate = { country_event = {
+            id = cso_federation.200 
+        }}
+}
+
+# Federation members join the leader in federation
+country_event = {
+	id = cso_federation.100
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        random_country = {
+            # get the leader
+            limit = {
+                exists = capital_scope
+                capital_scope.solar_system = {
+                    has_star_flag = cso_federation_1_leader
+                }            
+            }
+
+            establish_communications_no_message = prev
+            
+            root = {
+                join_alliance = {
+                    who = prev
+                    override_requirements = yes
+                }
+            }
+        }
+    }
+}
+
+
+# Federation members set up the federation without designated leader 
+country_event = {
+	id = cso_federation.200
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        every_country = {
+            limit = {
+                capital_scope.solar_system = {
+                    has_star_flag = cso_federation_1_member
+                }            
+            }
+
+            establish_communications_no_message = prev
+            
+            join_alliance = {
+                who = prev
+                override_requirements = yes
+            }
+        }
+    }
+}

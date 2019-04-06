@@ -1,0 +1,210 @@
+namespace = cso_isolation
+
+# Isolation trigger
+country_event = {
+	id = cso_isolation.10  
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_isolated_cluster
+                has_star_flag = cso_random_wormhole
+            }
+        }
+    }
+
+	immediate = {
+        country_event = {
+            id = cso_isolation.11
+        }
+        country_event = {
+            id = cso_isolation.12 
+        }
+	}
+}
+
+# specific triggers
+country_event = {
+	id = cso_isolation.11
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { capital_scope.solar_system = { 
+            has_star_flag = cso_isolated_cluster
+        }}
+
+    immediate = { country_event = {
+            id = cso_isolation.100 
+        }}
+}
+
+# specific triggers
+country_event = {
+	id = cso_isolation.12
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { capital_scope.solar_system = { 
+            has_star_flag = cso_random_wormhole
+        }}
+
+    immediate = { country_event = {
+            id = cso_isolation.200 
+        }}
+}
+
+# Isolate cluster
+country_event = {
+	id = cso_isolation.100
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        if = {
+            limit = { 
+                capital_scope.solar_system = {
+                    has_star_flag = cso_isloated_empire_cluster
+                }
+            }
+            
+            country_event = {
+                id = cso_isolation.101       
+            }
+        }
+        else = {
+            country_event = {
+                id = cso_isolation.102       
+            }
+        }
+    }
+}
+
+# if there is cso_isloated_empire_cluster
+country_event = {
+	id = cso_isolation.101
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        every_system = {
+            # get every system in the cluster that has cso_isloated_empire_cluster flag
+            limit = {
+                distance = {
+                    source = root.capital_scope.solar_system
+                    min_jumps >= 0
+                    max_jumps <= 3
+                }
+                has_star_flag = cso_isloated_empire_cluster 
+            }
+
+            # select hyperlanes that go outside of cluster
+            every_neighbor_system = {
+                limit = {
+                    NOR = {
+                        has_star_flag = cso_isloated_empire_cluster
+                    }
+                    any_neighbor_system = {
+                        NOR = { 
+                            is_same_value = prev
+                            has_star_flag = cso_isloated_empire_cluster
+                         }
+                    }
+                }
+
+                remove_hyperlane = { from = prev to = this }
+            }
+        }
+    }
+}
+
+# if there isn't cso_isloated_empire_cluster
+country_event = {
+	id = cso_isolation.102
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        every_system = {
+            # get every system in the cluster that has empire_cluster flag
+            limit = {
+                distance = {
+                    source = root.capital_scope.solar_system
+                    min_jumps >= 0
+                    max_jumps <= 3
+                }
+                has_star_flag = empire_cluster 
+            }
+
+            # select hyperlanes that go outside of cluster
+            every_neighbor_system = {
+                limit = {
+                    NOR = {
+                        has_star_flag = empire_cluster
+                    }
+                    any_neighbor_system = {
+                        NOR = { 
+                            is_same_value = prev
+                            has_star_flag = cso_isloated_empire_cluster
+                         }
+                    }
+                }
+
+                remove_hyperlane = { from = prev to = this }
+            }
+        }
+    }
+}
+
+# Create wormhole nearby to somewhere far away
+country_event = {
+	id = cso_isolation.200
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        capital_scope.solar_system = {
+            random_system = {
+                # select something nearby for one end of wormhole
+                limit = {
+                    has_natural_wormhole = no
+                    distance = {
+                        source = prev
+                        use_bypasses = no
+                        min_jumps >= 0
+                        max_jumps <= 2
+                    }
+                }
+
+                # select something far away for the other end
+                random_system = {
+                    limit = {
+                        distance = {
+                            source = prev
+							min_distance >= 500
+                        }
+                    }
+
+                    # create wormholes
+                    prev = {
+                        spawn_natural_wormhole = {
+                            bypass_type = wormhole
+                            random_pos = yes
+                            orbit_angle = 360
+                            }
+                    }
+        
+                    spawn_natural_wormhole = {
+                        bypass_type = wormhole
+                        random_pos = yes
+                        orbit_angle = 360
+                    }
+        
+                    link_wormholes = prev
+                }
+            }
+        }
+    }
+}
