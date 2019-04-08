@@ -16,6 +16,9 @@ planet_event = {
         # move in
         set_owner = fromfrom
         set_capital = yes
+        
+        # build up starting economy
+        # set up fromfrom and from for the event
         owner_species = {
             root = {
                 planet_event = {
@@ -29,7 +32,12 @@ planet_event = {
 
         # delete old capital planet
         event_target:cso_old_capital = {
-            remove_planet = yes   
+            # this will kill colony and make the planet very small
+            change_pc = pc_shielded
+            set_planet_size = 1
+
+            # this will remove it after a day
+            remove_planet = yes
         }
     }
 }

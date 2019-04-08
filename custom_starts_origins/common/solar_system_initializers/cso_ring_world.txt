@@ -81,7 +81,7 @@ cso_ring_world = {
 		home_planet = yes
 		class = ideal_planet_class
         orbit_angle = 0
-        orbit_distance = 50
+        orbit_distance = 45
 		deposit_blockers = none
         modifiers = none
 
