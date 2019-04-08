@@ -1,0 +1,35 @@
+namespace = cso_utils_capital
+
+# this - place to move
+# fromfrom - country
+# moves & sets up the initial capital to THIS planet
+planet_event = {
+	id = cso_utils_capital.100
+	hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+        fromfrom.capital_scope = {
+            save_event_target_as = cso_old_capital
+        }
+        
+        # move in
+        set_owner = fromfrom
+        set_capital = yes
+        owner_species = {
+            root = {
+                planet_event = {
+                    id = game_start.12
+                }
+            }
+        }
+        
+        # copy name
+        set_name = [event_target:cso_old_capital.GetName]
+
+        # delete old capital planet
+        event_target:cso_old_capital = {
+            remove_planet = yes   
+        }
+    }
+}

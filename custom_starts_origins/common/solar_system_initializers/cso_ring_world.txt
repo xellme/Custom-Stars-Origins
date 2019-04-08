@@ -1,0 +1,149 @@
+cso_ring_world = {
+	class = "rl_standard_stars"
+	usage = custom_empire
+
+	flags = { 
+		empire_home_system 
+        cso_ring_world
+        cso_tech_mega_engineering_option
+    }
+    
+	planet = {
+		class = star
+		orbit_distance = 0
+
+		init_effect = {            
+            set_planet_flag = starting_mining_target
+            set_planet_flag = starting_deposit
+
+			while = {
+				count = 4
+				create_ambient_object = {
+					type = "large_debris_object"
+					entity_offset_height = { min = -0 max = -25 }
+					location = this
+				}
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 45
+						angle = random
+					}
+				}
+			}
+			while = {
+				count = 2
+				create_ambient_object = {
+					type = "medium_debris_01_object"
+					entity_offset_height = { min = -0 max = -25 }
+					location = this
+				}
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 45
+						angle = random
+					}
+				}
+			}
+			while = {
+				count = 2
+				create_ambient_object = {
+					type = "medium_debris_02_object"
+					entity_offset_height = { min = -0 max = -25 }
+					location = this
+				}
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 45
+						angle = random
+					}
+				}
+			}
+			create_ambient_object = {
+				type = "small_debris_object"
+				entity_offset_height = { min = -0 max = -25 }
+				location = this
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = prev
+					distance = 45
+					angle = random
+				}
+			}
+		}
+	}
+
+	planet = {
+		count = 1
+		home_planet = yes
+		class = ideal_planet_class
+        orbit_angle = 0
+        orbit_distance = 50
+		deposit_blockers = none
+        modifiers = none
+
+		init_effect = {
+            generate_empire_home_planet = yes		    
+		}
+	}
+
+	init_effect = {
+		every_system_planet = {
+			clear_deposits = yes
+        }
+              
+		spawn_megastructure = {
+			type = ring_world_ruined
+			orbit_angle = 0 
+			orbit_distance = 45
+			location = planet
+		}
+		spawn_megastructure = {
+			type = ring_world_ruined
+			orbit_angle = 90
+			orbit_distance = 45
+			location = planet
+		}
+		spawn_megastructure = {
+			type = ring_world_ruined
+			orbit_angle = 180
+			orbit_distance = 45
+			location = planet
+		}
+		spawn_megastructure = {
+			type = ring_world_ruined
+			orbit_angle = 270
+			orbit_distance = 45
+			location = planet
+		}
+
+		while = {
+			count = 3
+			create_ambient_object = {
+				type = "large_debris_object"
+				location = solar_system
+			}
+		}
+		while = {
+			count = 2
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = solar_system
+			}
+		}
+		while = {
+			count = 2
+			create_ambient_object = {
+				type = "medium_debris_02_object"
+				location = solar_system
+			}
+		}
+		create_ambient_object = {
+			type = "small_debris_object"
+			location = solar_system
+		}
+	}
+}

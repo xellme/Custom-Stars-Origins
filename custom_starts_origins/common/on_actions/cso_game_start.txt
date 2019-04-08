@@ -8,5 +8,6 @@ on_game_start_country = {
         cso_techs.10
         cso_gateway.10
         cso_federation.10
+        cso_ring_world.10
     }
 }

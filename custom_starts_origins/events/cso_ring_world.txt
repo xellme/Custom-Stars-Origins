@@ -1,0 +1,151 @@
+namespace = cso_ring_world
+
+# Habitat trigger
+country_event = {
+	id = cso_ring_world.10
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_ring_world
+            }
+        }
+    }
+
+	immediate = {
+        country_event = {
+            id = cso_ring_world.11
+        }
+	}
+}
+
+# specific triggers
+country_event = {
+	id = cso_ring_world.11
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { capital_scope.solar_system = { 
+            has_star_flag = cso_ring_world
+        }}
+
+    immediate = {
+        country_event = {
+            id = cso_ring_world.200
+        }
+
+        country_event = {
+            id = cso_ring_world.201
+        }
+    }
+}
+
+# Upgrades one of the ruined sections of ring world
+country_event = {
+	id = cso_ring_world.200
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            any_system_megastructure = {
+                is_megastructure_type = ring_world_ruined
+            }
+        }
+    }
+
+    immediate = {
+        capital_scope.solar_system = {
+            random_system_megastructure = {
+                limit = {
+                    is_megastructure_type = ring_world_ruined
+                }
+                upgrade_megastructure_to = ring_world_restored
+                finish_upgrade = yes
+            }
+        }
+    }
+}
+
+# select where to move capital
+country_event = {
+	id = cso_ring_world.201
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+        capital_scope.solar_system = {
+            any_system_planet = {
+                OR = {
+                    is_planet_class = pc_ringworld_habitable
+                }
+            }
+        }
+    }
+
+	immediate = {
+        capital_scope.solar_system = {
+            random_system_planet = {
+                limit = {
+                    OR = {
+                        is_planet_class = pc_ringworld_habitable
+                    }
+                }
+                planet_event = {
+                    id = cso_utils_capital.100
+                }
+                planet_event = {
+                    id = cso_ring_world.202
+                }
+            }
+        }
+    }
+}
+
+# fix districts on ringworld
+planet_event = {
+	id = cso_ring_world.202
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        is_planet_class = pc_ringworld_habitable
+    }
+
+    immediate = {
+        # check if there was food production
+        if = {
+            limit = {
+                has_district = district_farming
+            }
+            set_variable = {
+                which = cso_farms
+                value = 1
+            }
+        }
+        
+        # conver the districts
+        change_pc = pc_ringworld_habitable
+
+        # add additonal generator and farm (unless empire do not produces food) to offset missing mines
+        add_district = district_generator_uncapped
+
+        if = {
+            limit = {
+                check_variable = {
+                    which = cso_farms
+                    value = 1
+                }
+            }
+            add_district = district_farming_uncapped
+        }
+        else = {
+            add_district = district_generator_uncapped
+        }
+    }
+}

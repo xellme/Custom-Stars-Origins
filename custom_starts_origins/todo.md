@@ -12,6 +12,7 @@
     1. Federation leader
 1. [x] Ring world start
 
+-----------------
 
 1. [x] On the run from hive mind
 1. [x] Civil war
