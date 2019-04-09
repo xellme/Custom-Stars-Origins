@@ -1,0 +1,9 @@
+l_english:
+ cso_s_federation_1_leader_NAME:0 "CSO S: Federation Gateway - leader"
+ cso_s_federation_1_leader_DESC:0 "Same as Random Unary I, but with:\n* President of federation with other countries that have <Federation - member> start\n* Advanced Start"
+ cso_s_federation_1_member_1_NAME:0 "CSO S: Federation Gateway - member 1"
+ cso_s_federation_1_member_1_DESC:0 "Same as Random Unary I, but with:\n* Member of federation with other countries that have <Federation - member> start"
+ cso_s_federation_1_member_2_NAME:0 "CSO S: Federation Gateway - member 2"
+ cso_s_federation_1_member_2_DESC:0 "Same as Random Unary I, but with:\n* Federation\n* Habitat\n* Isolated"
+ cso_s_ring_world_NAME:0 "CSO S: Isolated Ring World"
+ cso_s_ring_world_DESC:0 ""

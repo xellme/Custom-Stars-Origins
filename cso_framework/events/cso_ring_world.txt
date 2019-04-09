@@ -34,11 +34,59 @@ country_event = {
 
     immediate = {
         country_event = {
+            id = cso_ring_world.100
+        }
+
+        country_event = {
             id = cso_ring_world.200
         }
 
         country_event = {
             id = cso_ring_world.201
+        }
+    }
+}
+
+# Create ruined  ring world
+country_event = {
+	id = cso_ring_world.100
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        exists = capital_scope
+    }
+
+    immediate = {
+        capital_scope.solar_system = {
+            every_system_planet = {
+                clear_deposits = yes
+            }
+                  
+            spawn_megastructure = {
+                type = ring_world_ruined
+                orbit_angle = 0 
+                orbit_distance = 45
+                location = planet
+            }
+            spawn_megastructure = {
+                type = ring_world_ruined
+                orbit_angle = 90
+                orbit_distance = 45
+                location = planet
+            }
+            spawn_megastructure = {
+                type = ring_world_ruined
+                orbit_angle = 180
+                orbit_distance = 45
+                location = planet
+            }
+            spawn_megastructure = {
+                type = ring_world_ruined
+                orbit_angle = 270
+                orbit_distance = 45
+                location = planet
+            }
         }
     }
 }

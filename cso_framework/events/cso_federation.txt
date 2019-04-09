@@ -23,6 +23,10 @@ country_event = {
         country_event = {
             id = cso_federation.12 
         }
+        country_event = {
+            id = cso_federation.13
+            
+        }
 	}
 }
 
@@ -92,6 +96,43 @@ country_event = {
         }}
 }
 
+# specific triggers
+country_event = {
+	id = cso_federation.13
+	hide_window = yes
+    is_triggered_only = yes
+
+    trigger = { 
+        exists = capital_scope
+        capital_scope.solar_system = {
+            OR = {
+                has_star_flag = cso_federation_1_member
+                has_star_flag = cso_federation_1_leader
+            }
+        }
+        any_country = {
+            NOR = { 
+                is_same_empire = root
+                has_opinion_modifier = {
+                    who = root
+                    modifier = opinion_non_aligned_league
+                } 
+            }
+            exists = capital_scope
+            capital_scope.solar_system = { 
+                OR = {
+                    has_star_flag = cso_federation_1_member
+                    has_star_flag = cso_federation_1_leader
+                }
+            }   
+        }
+    }
+
+    immediate = { country_event = {
+            id = cso_federation.300 
+        }}
+}
+
 # Federation members join the leader in federation
 country_event = {
 	id = cso_federation.100
@@ -140,6 +181,47 @@ country_event = {
             join_alliance = {
                 who = prev
                 override_requirements = yes
+            }
+        }
+    }
+}
+
+# All federation members buff their opinion so the federetion dosen't crack at the start of the game 
+country_event = {
+	id = cso_federation.300
+	hide_window = yes
+    is_triggered_only = yes
+
+    immediate = {
+        every_country = {
+            limit = {
+                NOR = { 
+                    is_same_empire = root
+                    has_opinion_modifier = {
+                        who = root
+                        modifier = opinion_non_aligned_league
+                        
+                    } 
+                }
+                exists = capital_scope
+                capital_scope.solar_system = { 
+                    OR = {
+                        has_star_flag = cso_federation_1_member
+                        has_star_flag = cso_federation_1_leader
+                    }      
+                }
+            }
+            establish_communications_no_message = root
+
+            root = {
+                add_opinion_modifier = {
+                    who = prev
+                    modifier = opinion_non_aligned_league
+                }
+            }
+            add_opinion_modifier = {
+                who = root
+                modifier = opinion_non_aligned_league
             }
         }
     }

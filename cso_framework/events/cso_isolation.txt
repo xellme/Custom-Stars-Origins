@@ -164,6 +164,19 @@ country_event = {
 	hide_window = yes
     is_triggered_only = yes
 
+    trigger = {
+        exists = capital_scope
+        any_system = {
+            has_natural_wormhole = no
+            distance = {
+                source = root.capital_scope.solar_system
+                use_bypasses = no
+                min_jumps >= 0
+                max_jumps <= 2
+            }
+        }
+    }
+
     immediate = {
         capital_scope.solar_system = {
             random_system = {
@@ -181,6 +194,7 @@ country_event = {
                 # select something far away for the other end
                 random_system = {
                     limit = {
+                        has_natural_wormhole = no
                         distance = {
                             source = prev
 							min_distance >= 500
